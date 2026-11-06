@@ -4,50 +4,19 @@
 To develop a Simple Spring Boot MVC (Model-View-Controller) Application that uses a Controller to handle HTTP requests, a Model to pass data, and a View (Thymeleaf) to render dynamic HTML pages.
 
 ## ALGORITHM:
-Create a New Spring Boot Project:
-
-Use Spring Initializr
-
-Add dependencies:
-
-Spring Web
-
-Thymeleaf
-
-Set Up Project Structure:
-
-Create the main class annotated with @SpringBootApplication
-
-Create a Controller class using @Controller
-
-Add HTML templates under src/main/resources/templates
-
-Create a Controller:
-
-Define a method to handle HTTP GET requests using @GetMapping
-
-Return a view name (HTML page name) from the controller
-
-Pass data to the view using Model object
-
-Create a Model (Optional):
-
-Define a simple POJO class if you need to pass structured data to the view
-
-Create View Pages (HTML using Thymeleaf):
-
-Create an HTML file inside the templates folder
-
-Use Thymeleaf syntax (e.g., ${name}) to render dynamic content
-
-Run the Application:
-
-Run the Spring Boot application from your IDE or command line
-
-Access the Application:
-
-Open a browser and navigate to http://localhost:8080/
+1. Create a project using Spring Initializr  
+2. Add dependencies: Spring Web, Thymeleaf  
+3. Set up the main application class  
+4. Create a controller to handle requests  
+5. Define a method for the home page  
+6. Pass data from controller to view  
+7. Create HTML file in `templates` folder  
+8. Add basic CSS styles (inside HTML or separate file)  
+9. Use Thymeleaf to display data  
+10. Run the application  
+11. Open http://localhost:8080/ in browser  
 ## PROGRAM
+```
 spring-mvc-demo/
 ├── src/
 │   └── main/
@@ -60,9 +29,9 @@ spring-mvc-demo/
 │           │   └── index.html
 │           └── application.properties
 ├── pom.xml
-
+```
 ### pom.xml :
-
+```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
@@ -94,9 +63,9 @@ spring-mvc-demo/
         </dependency>
     </dependencies>
 </project>
-
+```
 ### MvcApplication.java (Main Class):
-
+```java
 package com.example.mvc;
 
 import org.springframework.boot.SpringApplication;
@@ -108,9 +77,9 @@ public class MvcApplication {
         SpringApplication.run(MvcApplication.class, args);
     }
 }
-
+```
 ### HomeController.java (Controller):
-
+```java
 package com.example.mvc;
 
 import org.springframework.stereotype.Controller;
@@ -120,25 +89,61 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/mvc")
     public String homePage(Model model) {
         model.addAttribute("message", "Welcome to Spring Boot MVC!");
-        return "index";  // refers to index.html in templates folder
+        return "index";  
     }
 }
+```
 ### index.html (View – inside src/main/resources/templates/):
-
+```html
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Spring MVC</title>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1 th:text="${message}">Default Message</h1>
+
+    <div class="card">
+        <h1>Welcome</h1>
+        <p>This is your Spring Boot page</p>
+    </div>
+
 </body>
 </html>
-
+```
 ### application.properties:
- server.port=8081
-
-
+```
+server.port=8080
+```
+### Output : 
+<img width="959" height="503" alt="image" src="https://github.com/user-attachments/assets/b0f042aa-90d8-479d-b984-b005a5f9d4ce" />

@@ -147,3 +147,7 @@ server.port=8080
 ```
 ### Output : 
 <img width="959" height="503" alt="image" src="https://github.com/user-attachments/assets/b0f042aa-90d8-479d-b984-b005a5f9d4ce" />
+
+## Result
+The Simple Spring Boot MVC Application was successfully developed and executed. The Controller handled the HTTP request, the Model passed data to the View, and Thymeleaf rendered the dynamic HTML page successfully in the browser. The application displayed the welcome message along with the personalized greeting.
+
